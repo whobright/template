@@ -19,10 +19,7 @@ Vue.use(directives)
 //引入请求接口函数
 import $axios from '@/utils/api.js';
 Vue.prototype.$axios=$axios;
-
-
 Vue.config.productionTip = false
-
 Vue.prototype.$echarts = echarts 
 Vue.use(Element);
 
