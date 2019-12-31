@@ -36,7 +36,7 @@
     },
     methods: {
       handleChange(value) {
-        console.log(value);
+        
       },
   
    

@@ -30,12 +30,12 @@
     methods: {
       addBox() {
         let index = this.layout.length - 1;
-        let rowIndex = index % 3;
-        let colIndex = Math.floor(index / 3);
-        let lastX = index == -1 ? 0 : this.layout[index].x;
-        let lastY = index == -1 ? 0 : this.layout[index].y;
-        let width = 4;
-        let height = 5;
+        let rowIndex = index%3+1;//行标
+        let colIndex = Math.floor(index / 3)+1;//列标
+        let lastX = index == -1 ? 0 : this.layout[index].x;//最后一个盒子的横坐标
+        let lastY = index == -1 ? 0 : this.layout[index].y;//最后一个盒子的纵坐标
+        let width = 4;//盒子的宽度
+        let height = 5;//盒子的高度
         if (index == -1) {
           this.layout.push({
             x: 0,
@@ -43,16 +43,17 @@
             w: width,
             h: height,
             i: index + 1,
-            components:`<echartBar class='bar'></echartBar> <slot></slot>`
+            components:` ${rowIndex}   ${colIndex}     `
           });
 
-        } else if (rowIndex < 2) {
+        } else if (rowIndex <= 2) {
           this.layout.push({
             x: lastX + width,
             y: lastY,
             w: width,
             h: height,
-            i: index + 1
+            i: index + 1,
+            components:` ${rowIndex}   ${colIndex}     `
           });
         } else {
           this.layout.push({
@@ -60,7 +61,8 @@
             y: lastY + height,
             w: width,
             h: height,
-            i: index + 1
+            i: index + 1,
+            components:` ${rowIndex}   ${colIndex}     `
           });
 
         }
